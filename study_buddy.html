@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Buddy Invitations</title>
@@ -16,6 +15,36 @@
             margin: 5px 0; /* Added margin for spacing between buttons */
             transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         }
+
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%;
+            position: fixed; /* Make navbar fixed at the top */
+            top: 0; /* Align the navbar at the top of the page */
+            z-index: 1000; /* Ensure navbar stays on top of other content */
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+      
         .accept-btn {
             background-color: #4CAF50; /* Green background */
             color: white;
@@ -39,6 +68,9 @@
             justify-content: center;
             padding-top: 20px;
             background-color: #f5f5f5;
+			background-image: url('https://media.istockphoto.com/id/1335757483/vector/vector-abstract-summer-background-with-green-and-blue-gradient-for-banner-poster.jpg?s=612x612&w=0&k=20&c=48ZS9iVZ2gg-LGBAYc0-uL8MZyyCwyca6XyroJzUAAE=');
+			background-size: cover;
+			
         }
         .container {
             display: flex;
@@ -92,6 +124,16 @@
     </style>
 </head>
 <body>
+
+  <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="todo.html">To-Do</a>
+      <a href="pomodoro.html">Pomodoro</a>
+     <a class="active" href="study_buddy.html">Study Buddy</a>
+      <a href="Accommodation.html">Accommodation</a>
+  </div>
+
 
 <div class="container">
     <div class="invitations">
@@ -171,7 +213,7 @@
         // Add click event listeners to "Start Chat" buttons
         document.querySelectorAll('.chat-btn').forEach(button => {
             button.addEventListener('click', function() {
-                alert('Starting Chat..');
+                alert('Redirectin');
                 // Here, you could potentially open a new chat window, redirect the user, etc.
             });
         });
@@ -223,3 +265,5 @@
 
 </body>
 </html>
+
+    

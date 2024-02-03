@@ -17,6 +17,7 @@ function randomTip() {
 }
 
 let pomodoro = document.getElementById("25");
+
   let short = document.getElementById("short-timer");
   let long = document.getElementById("long-timer");
   let cTimer = null;

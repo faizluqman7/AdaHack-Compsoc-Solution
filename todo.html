@@ -1,156 +1,166 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Study Planner</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <style>
-    .task {
-      border-radius: 5px;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      background-color: #c5e1e6;
-      height: 50px;
-      margin-bottom: 8px;
-      padding: 5px 10px;
-      display: flex;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
 
-    .task span {
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-    }
+        main {
+            padding-top: 60px; /* Adjusted padding to accommodate fixed navbar */
+        }
 
-    .task button {
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      height: 100%;
-      width: 40px;
-      border-radius: 5px;
-    }
+        .title {
+            text-align: center;
+            color: #333;
+        }
 
-    .priority-high {
-      background-color: #e74c3c; /* Red for high priority */
-    }
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%;
+            position: fixed; /* Make navbar fixed at the top */
+            top: 0; /* Align the navbar at the top of the page */
+            z-index: 1000; /* Ensure navbar stays on top of other content */
+        }
 
-    .priority-medium {
-      background-color: #f39c12; /* Orange for medium priority */
-    }
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
 
-    .priority-low {
-      background-color: #27ae60; /* Green for low priority */
-    }
+        .topnav a:hover, .topnav a.active {
+            background-color: #ddd;
+            color: black;
+        }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    #newtask {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+        .task-input, .task-select, #push {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* Ensures padding does not affect overall width */
+        }
 
-    #push {
-      background-color: #0d75ec;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      height: 45px;
-      width: 150px; /* Adjust the width as needed */
-      border-radius: 5px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-    }
-  </style>
+        #push {
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        #push:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .task {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+        }
+
+        .delete {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Added to distinguish priority visually */
+        .priority-high { background-color: #ffcccc; }
+        .priority-medium { background-color: #ffffcc; }
+        .priority-low { background-color: #ccffcc; }
+    </style>
 </head>
-
 <body>
-  <main>
-    <h1 class="title">To-Do</h1>
-    <div class="topnav">
-      <a href="index.html">Home</a>
-      <a href="calendar.html">Calendar</a>
-      <a class="active" href="todo.html">To-Do</a>
-      <a href="pomodoro.html">Pomodoro Timer</a>
-      <a href="tip.html">Tip of the Day</a>
-      <a href="study_buddy.html">Study Buddy</a>
-       <a href="Accommodation.html">Accommodation</a>
-    </div>
-
-    <div class="general">
-      <div class="container">
-        <div id="newtask">
-          <input type="text" placeholder="Add Tasks">
-          <input type="datetime-local" id="datetime" name="datetime">
-          <select id="prioritySelect">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
+    <main>
+        <h1 class="title">To-Do List</h1>
+        <div class="topnav">
+            <a href="index.html">Home</a>
+            <a href="calendar.html">Calendar</a>
+            <a class="active" href="todo.html">To-Do</a>
+            <a href="pomodoro.html">Pomodoro</a>
+            <a href="study_buddy.html">Study Buddy</a>
+            <a href="Accommodation.html">Accommodation</a>
         </div>
-        <div id="tasks"></div>
-        <button id="push">Add</button>
-      </div>
-      <script>
-        var pushButton = document.querySelector('#push');
-        var taskInput = document.querySelector('#newtask input');
-        var datetimeInput = document.querySelector('#newtask input[type=datetime-local]');
+
+        <div class="container">
+            <input type="text" placeholder="Add Tasks" class="task-input">
+            <input type="datetime-local" class="task-input">
+            <select id="prioritySelect" class="task-select">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <button id="push">Add Task</button>
+            <div id="tasks"></div>
+        </div>
+    </main>
+
+    <script>
+        var pushButton = document.getElementById('push');
+        var taskInput = document.querySelectorAll('.container .task-input')[0];
+        var datetimeInput = document.querySelectorAll('.container .task-input')[1];
         var prioritySelect = document.getElementById("prioritySelect");
 
-        pushButton.onclick = function () {
-          addTask();
-        };
-
-        // Add task when Enter key is pressed
-        taskInput.addEventListener("keyup", function (event) {
-          if (event.key === "Enter") {
-            addTask();
-          }
+        pushButton.addEventListener('click', addTask);
+        taskInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
         });
 
         function addTask() {
-          if (taskInput.value.length == 0) {
-            alert("Kindly Enter Task Name!!!!");
-          } else {
-            var priorityValue = prioritySelect.options[prioritySelect.selectedIndex].value;
-
-            var taskContainer = document.querySelector('#tasks');
-            taskContainer.innerHTML += `
-                <div class="task priority-${priorityValue}">
-                    <span class="taskname">
-                        ${taskInput.value} - ${datetimeInput.value}
-                    </span>
-                    <button class="delete">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
-                </div>
-            `;
-
-            taskInput.value = "";
-            datetimeInput.value = "";
-
-            var current_tasks = document.querySelectorAll(".delete");
-            for (var i = 0; i < current_tasks.length; i++) {
-              current_tasks[i].onclick = function () {
-                this.parentNode.remove();
-              };
+            if (taskInput.value.length === 0) {
+                alert("Please enter a task name.");
+                return;
             }
-          }
+            var priorityValue = prioritySelect.value;
+            var taskContainer = document.getElementById('tasks');
+            var taskElement = document.createElement('div');
+            taskElement.className = `task priority-${priorityValue}`;
+            taskElement.innerHTML = `<span>${taskInput.value} - ${datetimeInput.value}</span>
+                                     <button class="delete">Delete</button>`;
+            taskContainer.appendChild(taskElement);
+
+            taskInput.value = '';
+            datetimeInput.value = '';
+
+            var deleteButtons = document.querySelectorAll('.delete');
+            deleteButtons.forEach(button => button.addEventListener('click', function() {
+                this.parentElement.remove();
+            }));
         }
-      </script>
-    </div>
-  </main>
+    </script>
 </body>
 
 </html>
