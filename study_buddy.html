@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy Invitations</title>
+    <style>
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 5px 0; /* Added margin for spacing between buttons */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+        .accept-btn {
+            background-color: #4CAF50; /* Green background */
+            color: white;
+        }
+        .accept-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        .chat-btn {
+            background-color: #008CBA; /* Blue background */
+            color: white;
+        }
+        .chat-btn:hover {
+            background-color: #007bb5; /* Darker blue on hover */
+        }
+
+
+      
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .invitations, .create-invitation {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        .invitation-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Added to include padding and border in the element's total width and height */
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="invitations">
+        <h2>Available Study Invitations</h2>
+        <!-- Sample invitation 1 -->
+        <div class="invitation-item">
+            <h3>Calculus and It's Applications</h3>
+            <p><strong>Name:</strong> Oliver Quick</p>
+            <p><strong>Work:</strong> Week 4</p>
+            <p><strong>Time:</strong> March 5th, 3-5 PM</p>
+            <p><strong>Mode:</strong> Online</p>
+            <button class="accept-btn">Accept Invitation</button>
+            <button class="chat-btn">Start Chat</button>
+        </div>
+        <!-- Sample invitation 2 -->
+        <div class="invitation-item">
+            <h3>Introduction to Computer Systems</h3>
+            <p><strong>Name:</strong> Felix Calton</p>
+            <p><strong>Work:</strong> Lab Report Discussion</p>
+            <p><strong>Time:</strong> March 6th, 1-2 PM</p>
+            <p><strong>Mode:</strong> In-Person</p>
+            <p><strong>Location:</strong> Appleton 6.06</p>
+            <button class="accept-btn">Accept Invitation</button>
+            <button class="chat-btn">Start Chat</button>
+        </div>
+        <!-- Add more sample invitations here -->
+    </div>
+
+    <div class="create-invitation">
+        <h2>Create a Study Invitation</h2>
+        <form id="studyInvitationForm">
+            <div class="form-group">
+                <label for="course">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+            </div>
+            <div class="form-group">
+                <label for="specificWork">Specific Work:</label>
+                <input type="text" id="specificWork" name="specificWork" placeholder="e.g., Chapter 5 Review, Homework" required>
+            </div>
+            <div class="form-group">
+                <label for="timeFree">Time Available:</label>
+                <input type="text" id="timeFree" name="timeFree" placeholder="e.g., Feb 20, 2-4 PM" required>
+            </div>
+            <div class="form-group">
+                <label for="studyMode">Study Mode:</label>
+                <select id="studyMode" name="studyMode">
+                    <option value="online">Online</option>
+                    <option value="inPerson">In-Person</option>
+                </select>
+            </div>
+          <div class="form-group">
+              <label for="location">Location:</label>
+              <input type="text" id="location" name="location" placeholder="e.g., Appleton 6.06" required>
+          </div>
+            <input type="submit" value="Create Invitation">
+        </form>
+    </div>
+</div>
+
+  <script>
+
+    
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add click event listeners to "Accept Invitation" buttons
+        document.querySelectorAll('.accept-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Invitation Accepted! This has now been added to your calendar.');
+                // Here, you can add code to mark the invitation as accepted, update the UI, etc.
+            });
+        });
+
+        // Add click event listeners to "Start Chat" buttons
+        document.querySelectorAll('.chat-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Starting Chat..');
+                // Here, you could potentially open a new chat window, redirect the user, etc.
+            });
+        });
+    });
+
+  document.getElementById('studyInvitationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Extract the data from the form
+      var formData = new FormData(event.target);
+      var name = formData.get('name');
+      var course = formData.get('course');
+      var specificWork = formData.get('specificWork');
+      var timeFree = formData.get('timeFree');
+      var studyMode = formData.get('studyMode');
+      var location = formData.get('location');
+      var modeText = studyMode === 'online' ? 'Online' : 'In-Person';
+
+      // Create the new invitation item
+      var newInvitation = document.createElement('div');
+      newInvitation.classList.add('invitation-item');
+    newInvitation.innerHTML = `
+        <h3>${course}</h3>
+        <p><strong>Name:</strong> ${name}</p> <!-- Include the name -->
+        <p><strong>Work:</strong> ${specificWork}</p>
+        <p><strong>Time:</strong> ${timeFree}</p>
+        <p><strong>Mode:</strong> ${modeText}</p>
+        <p><strong>Location:</strong> ${location}</p> <!-- Include the location -->
+        <button class="delete-btn">Delete</button>
+        <button class="see-invitations-btn">See Invitations</button>
+    `;
+
+      // Append the new invitation to the invitations container
+      document.querySelector('.invitations').appendChild(newInvitation);
+
+      // Clear the form after submission
+      event.target.reset();
+
+      // Add event listener to the delete button
+      newInvitation.querySelector('.delete-btn').addEventListener('click', function() {
+          newInvitation.remove(); // This removes the invitation from the DOM
+      });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>

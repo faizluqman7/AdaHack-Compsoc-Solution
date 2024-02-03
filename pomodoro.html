@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Study Planner</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <main>
+      <h1 class="title">UoE Study Planner</h1>
+      <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="todo.html">To-Do</a>
+        <a href="tip.html">Tip of the Day</a>
+        <a class="active" href="pomodoro.html">Pomodoro Timer</a>
+        <a href="study_buddy.html">Study Buddy</a>
+      </div>
+
+
+          <div class="button-container">
+            <button class="button" id="pomodoro-session">25m Session</button>
+            <button class="button" id="short-break">5m Break</button>
+            <button class="button" id="long-break">10m break</button>
+          </div>
+
+          <div id="25" class="timer-display" data-duration="25.00">
+            25:00
+          </div>
+
+          <div id="short-timer" class="timer-display" data-duration="5.00">
+            5:00
+          </div>
+
+          <div id="long-timer" class="timer-display" data-duration="10.00">
+            10:00
+          </div>
+
+          <div id="buttons">
+            <button id="start">START</button>
+            <button id="stop">END</button>
+
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

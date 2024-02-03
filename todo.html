@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Study Planner</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    .task {
+      border-radius: 5px;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background-color: #c5e1e6;
+      height: 50px;
+      margin-bottom: 8px;
+      padding: 5px 10px;
+      display: flex;
+    }
+
+    .task span {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .task button {
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      height: 100%;
+      width: 40px;
+      border-radius: 5px;
+    }
+
+    .priority-high {
+      background-color: #e74c3c; /* Red for high priority */
+    }
+
+    .priority-medium {
+      background-color: #f39c12; /* Orange for medium priority */
+    }
+
+    .priority-low {
+      background-color: #27ae60; /* Green for low priority */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #newtask {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #push {
+      background-color: #0d75ec;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      height: 45px;
+      width: 150px; /* Adjust the width as needed */
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1 class="title">To-Do</h1>
+    <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="calendar.html">Calendar</a>
+      <a class="active" href="todo.html">To-Do</a>
+      <a href="pomodoro.html">Pomodoro Timer</a>
+      <a href="tip.html">Tip of the Day</a>
+      <a href="study_buddy.html">Study Buddy</a>
+       <a href="Accommodation.html">Accommodation</a>
+    </div>
+
+    <div class="general">
+      <div class="container">
+        <div id="newtask">
+          <input type="text" placeholder="Add Tasks">
+          <input type="datetime-local" id="datetime" name="datetime">
+          <select id="prioritySelect">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div id="tasks"></div>
+        <button id="push">Add</button>
+      </div>
+      <script>
+        var pushButton = document.querySelector('#push');
+        var taskInput = document.querySelector('#newtask input');
+        var datetimeInput = document.querySelector('#newtask input[type=datetime-local]');
+        var prioritySelect = document.getElementById("prioritySelect");
+
+        pushButton.onclick = function () {
+          addTask();
+        };
+
+        // Add task when Enter key is pressed
+        taskInput.addEventListener("keyup", function (event) {
+          if (event.key === "Enter") {
+            addTask();
+          }
+        });
+
+        function addTask() {
+          if (taskInput.value.length == 0) {
+            alert("Kindly Enter Task Name!!!!");
+          } else {
+            var priorityValue = prioritySelect.options[prioritySelect.selectedIndex].value;
+
+            var taskContainer = document.querySelector('#tasks');
+            taskContainer.innerHTML += `
+                <div class="task priority-${priorityValue}">
+                    <span class="taskname">
+                        ${taskInput.value} - ${datetimeInput.value}
+                    </span>
+                    <button class="delete">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
+            `;
+
+            taskInput.value = "";
+            datetimeInput.value = "";
+
+            var current_tasks = document.querySelectorAll(".delete");
+            for (var i = 0; i < current_tasks.length; i++) {
+              current_tasks[i].onclick = function () {
+                this.parentNode.remove();
+              };
+            }
+          }
+        }
+      </script>
+    </div>
+  </main>
+</body>
+
+</html>
