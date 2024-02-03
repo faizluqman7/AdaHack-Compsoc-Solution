@@ -1,59 +1,125 @@
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Accommodation</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-      </head>
-      <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accommodation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
 
-      <h1 class="title">Accommodation</h1>
-      <div class="topnav" align="center">
-        <a href="index.html">Home</a>
-        <a href="calendar.html">Calendar</a>
-        <a href="pomodoro.html">Pomodoro Timer</a>
-        <a href="tip.html">Tip of the Day</a>
-        <a href="study_buddy.html">Study Buddy</a>
-        <a class="active" href="Accommodation.html">Accommodation</a>
-      </div>
+    h1.title {
+      background-color: #0d75ec;
+      color: #ffffff;
+      padding: 20px;
+      margin: 0;
+      text-align: center;
+    }
 
-      <!-- Private Accommodation Section -->
-      <section>
-        <h2 onclick="toggleSection('privateAccommodation')">Private Accommodation</h2>
-        <p id="privateAccommodation" style="display: none;">
-         This is a private accommodation option.
-          <a href="https://amberstudent.com/places/search/university-of-edinburgh-1811058814101?utm_source=google_adwords&utm_campaign=search_uk_domestic&utm_content=Edinburgh-UniversityEdinburgh&keyword=edinburgh+uni+flats&gclid=Cj0KCQiA5fetBhC9ARIsAP1UMgHlMgaAgNsbkPLxSKot_LDhdWW-pCAcO4cCivW7J-EBTnTU9wYaJ4MaAh50EALw_wcB">Find Private accommodation here</a>
-        </p>
-      </section>
+    .topnav {
+      background-color: #333;
+      overflow: hidden;
+    }
 
-      <!-- University Accommodation Section -->
-      <section>
-        <h2 onclick="toggleSection('universityAccommodation')">University Accommodation</h2>
-        <p id="universityAccommodation" style="display: none;">
-          All University accommodation is available here:
-          <a href="https://www.accom.ed.ac.uk/our-accommodation/">University Accommodation</a>
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
 
-        </p>
-      </section>
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
 
-      <!-- Flats Section -->
-      <section>
-        <h2 onclick="toggleSection('flats')">Flats</h2>
-        <p id="flats" style="display: none;">
-          Websites for flat hunting: 
-          <a href="https://www.rightmove.co.uk/">1.Rightmove</a>
-          <a href=https://www.onthemarket.com/>2.OnTheMarket</a>
-          <a href="https://www.airbnb.com/">3.Citylets</a>
+    .topnav a.active {
+      background-color: #0d75ec;
+      color: white;
+    }
 
-        </p>
-      </section>
+    section {
+      background-color: #ffffff;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-      <script>
-        function toggleSection(sectionId) {
-          $('#' + sectionId).slideToggle();
-        }
-      </script>
+    section h2 {
+      cursor: pointer;
+      color: #0d75ec;
+    }
 
-      </body>
-      </html>
+    section p {
+      display: none;
+    }
+
+    section a {
+      color: #0d75ec;
+      text-decoration: underline;
+    }
+
+    section a:hover {
+      color: #085bbf;
+    }
+  </style>
+</head>
+<body>
+
+<h1 class="title">Accommodation</h1>
+<div class="topnav" align="center">
+  <a href="index.html">Home</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="pomodoro.html">Pomodoro Timer</a>
+  <a href="tip.html">Tip of the Day</a>
+  <a href="study_buddy.html">Study Buddy</a>
+  <a class="active" href="Accommodation.html">Accommodation</a>
+</div>
+
+<!-- Private Accommodation Section -->
+<section>
+  <h2 onclick="toggleSection('privateAccommodation')">Private Accommodation</h2>
+  <p id="privateAccommodation">
+    This is a private accommodation option.
+    <a href="https://amberstudent.com/places/search/university-of-edinburgh-1811058814101?utm_source=google_adwords&utm_campaign=search_uk_domestic&utm_content=Edinburgh-UniversityEdinburgh&keyword=edinburgh+uni+flats&gclid=Cj0KCQiA5fetBhC9ARIsAP1UMgHlMgaAgNsbkPLxSKot_LDhdWW-pCAcO4cCivW7J-EBTnTU9wYaJ4MaAh50EALw_wcB">Find Private accommodation here</a>
+  </p>
+</section>
+
+<!-- University Accommodation Section -->
+<section>
+  <h2 onclick="toggleSection('universityAccommodation')">University Accommodation</h2>
+  <p id="universityAccommodation">
+    All University accommodation is available here:
+    <a href="https://www.accom.ed.ac.uk/our-accommodation/">University Accommodation</a>
+    You also 
+  </p>
+</section>
+
+<!-- Flats Section -->
+<section>
+  <h2 onclick="toggleSection('flats')">Flats</h2>
+  <p id="flats">
+    Websites for flat hunting: 
+    <a href="https://www.rightmove.co.uk/">1. Rightmove</a>
+    <a href="https://www.onthemarket.com/">2. OnTheMarket</a>
+    <a href="https://www.citylets.co.uk/">3. Citylets</a>
+  </p>
+</section>
+
+<script>
+  function toggleSection(sectionId) {
+    $('#' + sectionId).slideToggle();
+  }
+</script>
+
+</body>
+</html>
